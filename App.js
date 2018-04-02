@@ -1,33 +1,17 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
+import Main from './src/components/Main/Main';
+import Authentication from './src/components/Authentication/Authentication';
+import OrderHistory from './src/components/OrderHistory/OrderHistory';
+import ChangeInfo from './src/components/ChangeInfo/ChangeInfo';
 
-import AppShop from './src/components/AppShop';
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <AppShop />
-
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+const Mystack = StackNavigator({
+  Home: { screen: Main },
+  Order: { screen: OrderHistory },
+  Auth: { screen: Authentication },
+  Change: { screen: ChangeInfo }
 });
+
+export default Mystack;
+
