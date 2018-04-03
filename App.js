@@ -9,7 +9,7 @@ import Home from './src/components/Home/Home';
 import Cart from './src/components/Cart/Cart';
 import Search from './src/components/Search/Search';
 import Contact from './src/components/Contact/Contact';
-
+import Container from './src/components/Container';
 // const Mystack = StackNavigator({
 //   Home: { screen: Main },
 //   Order: { screen: OrderHistory },
@@ -20,7 +20,7 @@ const MyTabnavigator = TabNavigator({
   Home: { screen: Home },
   Cart: { screen: Cart },
   Search: { screen: Search },
-  Contact: { screen: Contact }
+  Contact: { screen: Contact },
 },
   {
     swipeEnabled: true,
@@ -36,6 +36,16 @@ const MySlideMenu = DrawerNavigator({
     contentComponent: props => <Authentication {...props} />
   }
 );
-
-export default MySlideMenu;
+const Mystack = StackNavigator({
+  Home: {
+    screen: MySlideMenu,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Order: { screen: OrderHistory },
+  Auth: { screen: Authentication },
+  Change: { screen: ChangeInfo }
+});
+export default Mystack;
 

@@ -11,20 +11,20 @@ import {
     Text,
     View,
     Button,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native';
 
 export default class Authentication extends Component {
     render() {
+        const { navigate } = this.props.navigation;
         const { goBack } = this.props.navigation;
         const {params} = this.props.navigation.state;
         return (
             <View style={styles.container}>
-                <Button title="Back"
-                    onPress={() => {
-                        goBack();
-                    }}
-                />
+                <TouchableOpacity onPress={()=>{ navigate('Order')}}>
+                    <Text>Toi order</Text>
+                </TouchableOpacity>
             </View>
         );
     }
