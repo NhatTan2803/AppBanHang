@@ -18,21 +18,22 @@ export default class OrderHistory extends Component {
     // static navigationOptions = ({navigation})=>({
     //   title: `${navigation.state.params.username}`
     // })
-    //   static navigationOptions = {
-    //     title:'Chat',
-    //   }
-    render() {
 
+    static navigationOptions = {
+        title: 'Order History',
+        
+    }
+    render() {
+        const { goBack } = this.props.navigation;
+        const { params } = this.props.navigation.state;
+        console.log(this.props.navigation)
         return (
             <View style={styles.container}>
-                <Text>{params.username}</Text>
-
                 <Button title="Back"
                     onPress={() => {
                         goBack();
                     }}
                 />
-                <Text>Mang hinh chat</Text>
             </View>
         );
     }

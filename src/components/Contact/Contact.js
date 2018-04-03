@@ -13,19 +13,28 @@ import {
     Button,
     Image
 } from 'react-native';
+import Container from '../Container';
 
-export default class Authentication extends Component {
+export default class Contact extends Component {
+    // static navigationOptions = ({navigation})=>({
+    //   title: `${navigation.state.params.username}`
+    // })
+    static navigationOptions = {
+        tabBarLabel: 'Contact',
+        tabBarIcon: ({ tintColor }) => (
+            <Image
+                source={require('../../img/contact.png')}
+                style={[{ tintColor: tintColor }, styles = { width: 20, height: 20, justifyContent: 'center', alignItems: 'center' }]}
+            />
+        )
+    }
     render() {
         const { goBack } = this.props.navigation;
-        const {params} = this.props.navigation.state;
+        const { params } = this.props.navigation.state;
         return (
-            <View style={styles.container}>
-                <Button title="Back"
-                    onPress={() => {
-                        goBack();
-                    }}
-                />
-            </View>
+            <Container>
+                <Text>Home</Text>
+            </Container>
         );
     }
 }

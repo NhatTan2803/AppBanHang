@@ -18,23 +18,20 @@ export default class ChangeInfo extends Component {
     // static navigationOptions = ({navigation})=>({
     //   title: `${navigation.state.params.username}`
     // })
-    //   static navigationOptions = {
-    //     title:'Chat',
-    //   }
+    static navigationOptions = {
+        title: 'Change Info'
+    }
     render() {
-        const { params } = this.props.navigation.state;
         const { goBack } = this.props.navigation;
-        console.log(params)
+        const { params } = this.props.navigation.state;
         return (
             <View style={styles.container}>
-                <Text>{params.username}</Text>
-
                 <Button title="Back"
                     onPress={() => {
                         goBack();
                     }}
                 />
-                <Text>Mang hinh chat</Text>
+                <Text>Mang hinh {params.Name}</Text>
             </View>
         );
     }

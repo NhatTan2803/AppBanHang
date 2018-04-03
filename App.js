@@ -1,17 +1,41 @@
 import React, { Component } from 'react';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
-import Main from './src/components/Main/Main';
+
 import Authentication from './src/components/Authentication/Authentication';
 import OrderHistory from './src/components/OrderHistory/OrderHistory';
 import ChangeInfo from './src/components/ChangeInfo/ChangeInfo';
 
+import Home from './src/components/Home/Home';
+import Cart from './src/components/Cart/Cart';
+import Search from './src/components/Search/Search';
+import Contact from './src/components/Contact/Contact';
 
-const Mystack = StackNavigator({
-  Home: { screen: Main },
-  Order: { screen: OrderHistory },
-  Auth: { screen: Authentication },
-  Change: { screen: ChangeInfo }
-});
+// const Mystack = StackNavigator({
+//   Home: { screen: Main },
+//   Order: { screen: OrderHistory },
+//   Auth: { screen: Authentication },
+//   Change: { screen: ChangeInfo }
+// });
+const MyTabnavigator = TabNavigator({
+  Home: { screen: Home },
+  Cart: { screen: Cart },
+  Search: { screen: Search },
+  Contact: { screen: Contact }
+},
+  {
+    swipeEnabled: true,
+    tabBarPosition: 'bottom',
 
-export default Mystack;
+  });
+
+const MySlideMenu = DrawerNavigator({
+  HomeSlide: { screen: MyTabnavigator },
+
+},
+  {
+    contentComponent: props => <Authentication {...props} />
+  }
+);
+
+export default MySlideMenu;
 

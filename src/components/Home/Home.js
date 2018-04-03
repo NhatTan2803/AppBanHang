@@ -13,19 +13,25 @@ import {
     Button,
     Image
 } from 'react-native';
-
-export default class Authentication extends Component {
+import Container from '../Container';
+export default class Cart extends Component {
+    
+    static navigationOptions = {
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ tintColor }) => (
+            <Image
+              source={require('../../img/home.png')}
+              style={[{ tintColor: tintColor }, styles = { width: 20, height: 20, justifyContent: 'center', alignItems: 'center'}]}
+            />
+          )
+    }
     render() {
         const { goBack } = this.props.navigation;
-        const {params} = this.props.navigation.state;
+        const { params } = this.props.navigation.state;
         return (
-            <View style={styles.container}>
-                <Button title="Back"
-                    onPress={() => {
-                        goBack();
-                    }}
-                />
-            </View>
+           <Container>
+               <Text>Home</Text>
+           </Container>
         );
     }
 }
