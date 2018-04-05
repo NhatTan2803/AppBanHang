@@ -39,8 +39,8 @@ export default class Container extends Component {
                     </View>
                 </View>
                 <View style={{
-                    flex: 5, justifyContent: 'center',
-                    alignItems: 'center'
+                    flex: 5
+                    // alignItems: 'center'
                 }}>
                     {this.props.children}
                 </View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
         flex: 1,
-        backgroundColor: 'green',
+        backgroundColor: '#40C4FF',
         justifyContent: 'space-between',
         paddingTop: 5,
         // alignItems: 'center',

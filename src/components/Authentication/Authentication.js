@@ -19,10 +19,10 @@ export default class Authentication extends Component {
     render() {
         const { navigate } = this.props.navigation;
         const { goBack } = this.props.navigation;
-        const {params} = this.props.navigation.state;
+        const { params } = this.props.navigation.state;
         return (
             <View style={styles.container}>
-                <TouchableOpacity onPress={()=>{ navigate('Order')}}>
+                <TouchableOpacity onPress={() => { navigate('Order') }}>
                     <Text>Toi order</Text>
                 </TouchableOpacity>
             </View>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#80D8FF',
     },
     welcome: {
         fontSize: 20,

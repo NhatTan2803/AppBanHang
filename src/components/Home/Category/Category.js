@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Text, View, Dimensions, Image, StyleSheet } from 'react-native'
 const { width, height } = Dimensions.get('window');
 
-export default class Collection extends Component {
+export default class Category extends Component {
     render() {
         const { wrapper, banner, textSpring } = styles
         return (
             <View style={styles.wrapper}>
                 <View style={{ flex: 1,justifyContent:'center' }}>
-                    <Text style={textSpring}>SPRING COLLECTION</Text>
+                    <Text style={textSpring}>Category</Text>
                 </View>
                 <View style={{ flex: 7,paddingBottom: 5,paddingLeft: 10, }}>
                     <Image

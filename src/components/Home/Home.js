@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import Container from '../Container'
-import Collection from '../Home/Collection/Collection'
+import Collection from '../Home/Collection/Collection';
+import Category from '../Home/Category/Category'
+
 
 export default class Home extends Component {
     constructor(props) {
@@ -26,10 +28,8 @@ export default class Home extends Component {
         return (
             <View style={{ flex: 1, }}>
                 <Container method={this.MoSlide} >
-                    <TouchableOpacity onPress={() => this.MoSlide()}>
-                        {/* <Text>Home</Text> */}
-                    </TouchableOpacity>
                     <Collection />
+                    <Category/>
                 </Container>
             </View>
 
@@ -41,8 +41,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 2,
         margin: 10,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        backgroundColor: 'yellow',
     },
 });
