@@ -15,13 +15,9 @@ import {
 } from 'react-native';
 
 export default class OrderHistory extends Component {
-    // static navigationOptions = ({navigation})=>({
-    //   title: `${navigation.state.params.username}`
-    // })
-
+    
     static navigationOptions = {
-        title: 'Order History',
-        
+        title: 'Order History', 
     }
     render() {
         const { goBack } = this.props.navigation;

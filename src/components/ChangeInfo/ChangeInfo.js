@@ -15,9 +15,6 @@ import {
 } from 'react-native';
 
 export default class ChangeInfo extends Component {
-    // static navigationOptions = ({navigation})=>({
-    //   title: `${navigation.state.params.username}`
-    // })
     static navigationOptions = {
         title: 'Change Info'
     }
@@ -31,7 +28,6 @@ export default class ChangeInfo extends Component {
                         goBack();
                     }}
                 />
-                <Text>Mang hinh {params.Name}</Text>
             </View>
         );
     }
