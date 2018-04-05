@@ -1,22 +1,13 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    Button,
-    Image,
-    TouchableOpacity
-} from 'react-native';
-import Container from '../Container';
-export default class Cart extends Component {
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import Container from '../Container'
+import Collection from '../Home/Collection/Collection'
 
+export default class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.MoSlide = this.MoSlide.bind(this);
+    }
     static navigationOptions = {
         tabBarLabel: 'Home',
         tabBarIcon: ({ tintColor }) => (
@@ -26,17 +17,21 @@ export default class Cart extends Component {
             />
         )
     }
+    
+    MoSlide() {
+        this.props.navigation.navigate("DrawerOpen")
+    }
     render() {
         const { navigate } = this.props.navigation;
-        const { goBack } = this.props.navigation;
-        const { params } = this.props.navigation.state;
         return (
-            <Container navigatetion={this.props.navigation.navigate}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate("DrawerOpen")}>
-                    <Text>mo side</Text>
-                </TouchableOpacity>
-                <Text>Home</Text>
-            </Container>
+            <View style={{ flex: 1, }}>
+                <Container method={this.MoSlide} >
+                    <TouchableOpacity onPress={() => this.MoSlide()}>
+                        {/* <Text>Home</Text> */}
+                    </TouchableOpacity>
+                    <Collection />
+                </Container>
+            </View>
 
         );
     }
@@ -44,19 +39,10 @@ export default class Cart extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
+        flex: 2,
         margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        backgroundColor: 'yellow',
     },
 });

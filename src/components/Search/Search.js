@@ -6,35 +6,34 @@
 
 import React, { Component } from 'react';
 import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    Button,
-    Image
+    Platform, StyleSheet, Text, View, Button, Image
 } from 'react-native';
 import Container from '../Container';
 
 export default class Search extends Component {
-    // static navigationOptions = ({navigation})=>({
-    //   title: `${navigation.state.params.username}`
-    // })
+    constructor(props){
+        super(props);
+        this.MoDrawer = this.MoSlide.bind(this);
+    }
     static navigationOptions = {
-        tabBarLabel:'Search',
+        tabBarLabel: 'Search',
         tabBarIcon: ({ tintColor }) => (
             <Image
-              source={require('../../img/search.png')}
-              style={[{ tintColor: tintColor }, styles = { width: 20, height: 20, justifyContent: 'center', alignItems: 'center'}]}
+                source={require('../../img/search.png')}
+                style={[{ tintColor: tintColor }, styles = { width: 20, height: 20, justifyContent: 'center', alignItems: 'center' }]}
             />
-          )
+        )
+    }
+    MoSlide(){
+        this.props.navigation.navigate("DrawerOpen")
     }
     render() {
         const { goBack } = this.props.navigation;
-        const {params} = this.props.navigation.state;
+        const { params } = this.props.navigation.state;
         return (
-            <Container>
-            <Text>Home</Text>
-        </Container>
+            <Container method={this.MoDrawer}>
+                <Text>Home</Text>
+            </Container>
         );
     }
 }

@@ -16,9 +16,10 @@ import {
 import Container from '../Container';
 
 export default class Contact extends Component {
-    // static navigationOptions = ({navigation})=>({
-    //   title: `${navigation.state.params.username}`
-    // })
+    constructor(props) {
+        super(props);
+        this.MoDrawer = this.MoSlide.bind(this);
+    }
     static navigationOptions = {
         tabBarLabel: 'Contact',
         tabBarIcon: ({ tintColor }) => (
@@ -28,11 +29,14 @@ export default class Contact extends Component {
             />
         )
     }
+    MoSlide() {
+        this.props.navigation.navigate("DrawerOpen")
+    }
     render() {
         const { goBack } = this.props.navigation;
         const { params } = this.props.navigation.state;
         return (
-            <Container>
+            <Container method={this.MoDrawer}>
                 <Text>Home</Text>
             </Container>
         );
