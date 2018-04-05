@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
 import Container from '../Container'
 import Collection from '../Home/Collection/Collection';
 import Category from '../Home/Category/Category'
-
+import TopProduct from '../Home/TopProduct/TopProduct';
 
 export default class Home extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ export default class Home extends Component {
             />
         )
     }
-    
+
     MoSlide() {
         this.props.navigation.navigate("DrawerOpen")
     }
@@ -28,8 +28,11 @@ export default class Home extends Component {
         return (
             <View style={{ flex: 1, }}>
                 <Container method={this.MoSlide} >
-                    <Collection />
-                    <Category/>
+                    <ScrollView>
+                        <Collection />
+                        <Category />
+                        <TopProduct />
+                    </ScrollView>
                 </Container>
             </View>
 

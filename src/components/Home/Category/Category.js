@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Image, StyleSheet } from 'react-native'
+import { Text, View, Dimensions, Image, StyleSheet } from 'react-native';
+import Swiper from 'react-native-swiper';
 const { width, height } = Dimensions.get('window');
+
+import littleIcon from '../../../img/temp/little.jpg';
+import maxiIcon from '../../../img/temp/maxi.jpg';
+import partyIcon from '../../../img/temp/party.jpg';
+
 
 export default class Category extends Component {
     render() {
         const { wrapper, banner, textSpring } = styles
         return (
             <View style={styles.wrapper}>
-                <View style={{ flex: 1,justifyContent:'center' }}>
+                <View style={{ flex: 1, justifyContent: 'center' }}>
                     <Text style={textSpring}>Category</Text>
                 </View>
-                <View style={{ flex: 7,paddingBottom: 5,paddingLeft: 10, }}>
-                    <Image
-                        source={require('../../../img/temp/banner.jpg')}
-                        style={banner}
-                    />
+                <View style={{ flex: 7, paddingBottom: 5, paddingLeft: 10, }}>
+                    <Swiper width={imgWidth} height={imgHeight}>
+                        <Image source={littleIcon} style={banner} />
+                        <Image source={maxiIcon} style={banner} />
+                        <Image source={partyIcon} style={banner} />
+                    </Swiper>
                 </View>
             </View>
         )
