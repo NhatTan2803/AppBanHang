@@ -16,7 +16,7 @@ import {
 
 export default class ChangeInfo extends Component {
     static navigationOptions = {
-        title: 'Change Info'
+        header: null
     }
     render() {
         const { goBack } = this.props.navigation;

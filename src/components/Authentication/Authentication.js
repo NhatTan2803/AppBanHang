@@ -32,7 +32,7 @@ class Menu extends Component {
         } = styles;
         const logoutJSX = (
             <View style={{ flex: 1 }}>
-                <TouchableOpacity style={btnStyle} onPress={() => this.props.navigation.navigate('Order')} >
+                <TouchableOpacity style={btnStyle} onPress={() => this.props.navigation.navigate('SignIn')} >
                     <Text style={btnText}>Sign In</Text>
                 </TouchableOpacity>
             </View>
@@ -47,14 +47,14 @@ class Menu extends Component {
                     <TouchableOpacity style={btnSignInStyle} onPress={() => this.props.navigation.navigate('Change')}>
                         <Text style={btnTextSignIn}>Change Info</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={btnSignInStyle} onPress={() => this.props.navigation.navigate('Sign')}>
+                    <TouchableOpacity style={btnSignInStyle} onPress={() => this.props.navigation.navigate('SignOut')}>
                         <Text style={btnTextSignIn}>Sign out</Text>
                     </TouchableOpacity>
                 </View>
                 <View />
             </View>
         );
-        const mainJSX = this.state.isLogedIn ? loginJSX : logoutJSX;
+        const mainJSX = this.state.isLogedIn ? logoutJSX : loginJSX;
         return (
             <View style={container}>
                 <Image source={profileIcon} style={profile} />

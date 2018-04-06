@@ -10,6 +10,8 @@ import Search from './src/components/Search/Search';
 import Contact from './src/components/Contact/Contact';
 import Home from './src/components/Home/Home';
 import Container from './src/components/Container';
+import SignIn from './src/components/SignIn/SignIn';
+import SignOut from './src/components/SignOut/SignOut';
 
 
 const MyTabnavigator = TabNavigator({
@@ -59,6 +61,8 @@ const Mystack = StackNavigator({
   },
   Order: { screen: OrderHistory },
   Change: { screen: ChangeInfo },
+  SignIn: { screen: SignIn },
+  SignOut: { screen: SignOut }
 });
 export default Mystack;
 
