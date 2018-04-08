@@ -8,33 +8,17 @@ import ChangeInfo from './src/components/ChangeInfo/ChangeInfo';
 import Cart from './src/components/Cart/Cart';
 import Search from './src/components/Search/Search';
 import Contact from './src/components/Contact/Contact';
-import Home from './src/components/Home/Home';
-import Container from './src/components/Container';
+import HomeStack from './src/components/Home/HomeStack';
 import SignIn from './src/components/SignIn/SignIn';
 import SignOut from './src/components/SignOut/SignOut';
-
+import ListProduct from './src/components/ListProduct/ListProduct';
+// import ProductDetail from './src/components/ProductDetail/ProductDetail';
 
 const MyTabnavigator = TabNavigator({
-  Home: {
-    screen: Home, navigationOptions: {
-      header: null
-    }
-  },
-  Cart: {
-    screen: Cart, navigationOptions: {
-      header: null
-    }
-  },
-  Search: {
-    screen: Search, navigationOptions: {
-      header: null
-    }
-  },
-  Contact: {
-    screen: Contact, navigationOptions: {
-      header: null
-    }
-  }
+  Home: { screen: HomeStack },
+  Cart: { screen: Cart },
+  Search: { screen: Search },
+  Contact: { screen: Contact }
 },
   {
     swipeEnabled: true,
@@ -42,7 +26,6 @@ const MyTabnavigator = TabNavigator({
 
   }
 );
-
 const MySlideMenu = DrawerNavigator({
   HomeSlide: { screen: MyTabnavigator },
 },
@@ -50,8 +33,6 @@ const MySlideMenu = DrawerNavigator({
     contentComponent: props => <Authentication {...props} />
   }
 );
-
-
 const Mystack = StackNavigator({
   Home: {
     screen: MySlideMenu,

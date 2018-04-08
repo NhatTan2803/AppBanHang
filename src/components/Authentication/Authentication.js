@@ -9,7 +9,7 @@ import profileIcon from '../../img/temp/profile.png';
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = { isLogedIn: true };
+        this.state = { isLogedIn: false };
     }
 
     // gotoAuthentication() {
@@ -39,7 +39,7 @@ class Menu extends Component {
         );
         const loginJSX = (
             <View style={loginContainer}>
-                <Text style={username}>Nguyen Van Pho</Text>
+                <Text style={username}>Nguyen Nhat Tan</Text>
                 <View>
                     <TouchableOpacity style={btnSignInStyle} onPress={() => this.props.navigation.navigate('Order')} >
                         <Text style={btnTextSignIn}>Order History</Text>

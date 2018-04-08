@@ -5,6 +5,7 @@ import Collection from '../Home/Collection/Collection';
 import Category from '../Home/Category/Category'
 import TopProduct from '../Home/TopProduct/TopProduct';
 
+
 export default class Home extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +20,9 @@ export default class Home extends Component {
             />
         )
     }
-
+    onPressShowDetail(){
+        this.props.navigation.navigate("Detailpage")
+    }
     MoSlide() {
         this.props.navigation.navigate("DrawerOpen")
     }
@@ -29,7 +32,9 @@ export default class Home extends Component {
             <View style={{ flex: 1, }}>
                 <Container method={this.MoSlide} >
                     <ScrollView>
-                        <Collection />
+                        <Collection 
+                        showDetail ={this.onPressShowDetail.bind(this)}
+                        />
                         <Category />
                         <TopProduct />
                     </ScrollView>

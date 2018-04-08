@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity, Image, Dimensions, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, TextInput } from 'react-native';
 import IcM from "../img/ic_menu.png";
 import IcL from "../img/ic_logo.png";
 
 const { height } = Dimensions.get('window');
 const { width } = Dimensions.get('window');
-import Home from '../components/Home/Home';
-import Collection from '../components/Home/Collection/Collection'
 
 export default class Container extends Component {
+    
     constructor(props) {
         super(props);
     }
-
     render() {
         const { logo, wrapper, text, textIput } = styles
         return (
@@ -33,9 +31,7 @@ export default class Container extends Component {
                     </View>
 
                     <View style={{ flex: 1, paddingTop: 10, alignItems: 'center', }}>
-                        <TextInput style={textIput}>
-
-                        </TextInput>
+                        <TextInput style={textIput}></TextInput>
                     </View>
                 </View>
                 <View style={{
