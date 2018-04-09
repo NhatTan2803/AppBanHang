@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 export default class Detail extends Component {
-    state = {}
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
+            <View style={{ flex: 1, backgroundColor: 'pink', justifyContent: 'center', padding: 150, }}>
+                <TouchableOpacity onPress={this.props.method}>
+                    <Text style={{ fontSize: 200, }}>Back</Text>
+                </TouchableOpacity>
 
-            <Text>This is Detail product </Text>
-
+            </View>
         );
     }
 }

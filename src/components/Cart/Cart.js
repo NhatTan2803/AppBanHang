@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
-import Container from '../Container'
-import Collection from '../Home/Collection/Collection';
-import Category from '../Home/Category/Category'
-import TopProduct from '../Home/TopProduct/TopProduct';
-import Detail from '../Home/Detail';
+import Container from '../Container';
+import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import CartView from './CartView';
+
 export default class Home extends Component {
     constructor(props) {
         super(props);
+        this.detailGoBack = this.detailGoBack.bind(this);
         this.MoSlide = this.MoSlide.bind(this);
         this.state = {
-            showCart: false
-        }
+            showCart: true,
+        };
     }
     static navigationOptions = {
         tabBarLabel: 'Cart',
@@ -25,38 +24,32 @@ export default class Home extends Component {
     }
     onPressShowDetail() {
         this.setState({
-            showCart: true
-        })
+            showCart: false,
+        });
     }
     detailGoBack() {
-        this.props.navigation.navigate("Home")
+        this.setState({
+            showCart: true,
+        });
     }
     MoSlide() {
-        this.props.navigation.navigate("DrawerOpen")
+        this.props.navigation.navigate('DrawerOpen');
     }
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, }}>
                 <Container method={this.MoSlide} >
                     {
                         this.state.showCart ? (
                             <View>
-                                <Detail />
-                                <TouchableOpacity onPress={() => this.setState({ showCart: false })}><Text>Cick me to back</Text></TouchableOpacity>
+                                <CartView showDetail={this.onPressShowDetail.bind(this)} />
                             </View>
                         ) : (
-                                <ScrollView>
-                                    {/* <Collection
-                                        showCart={this.onPressShowDetail.bind(this)}
-                                    />
-                                    <Category />
-                                    <TopProduct /> */}
-                                    <CartView/>
-                                </ScrollView>
+                                <View>
+                                    <ProductDetail method={this.detailGoBack.bind(this)} />
+                                </View>
                             )
                     }
-
                 </Container>
             </View>
 

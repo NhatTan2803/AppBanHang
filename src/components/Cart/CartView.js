@@ -3,6 +3,7 @@ import {
     View, Text, TouchableOpacity, ScrollView,
     Dimensions, StyleSheet, Image
 } from 'react-native';
+import ProductDetail from '../ProductDetail/ProductDetail';
 
 import sp1 from '../../img/temp/sp1.jpeg';
 
@@ -11,9 +12,8 @@ function toTitleCase(str) {
 }
 
 class CartView extends Component {
-    gotoDetail() {
-        const { navigator } = this.props;
-        navigator.push({ name: 'PRODUCT_DETAIL' });
+    constructor(props) {
+        super(props);
     }
     render() {
         const { main, checkoutButton, checkoutTitle, wrapper,
@@ -45,7 +45,7 @@ class CartView extends Component {
                                         <Text>-</Text>
                                     </TouchableOpacity>
                                 </View>
-                                <TouchableOpacity style={showDetailContainer}>
+                                <TouchableOpacity style={showDetailContainer} onPress={this.props.showDetail}>
                                     <Text style={txtShowDetail}>SHOW DETAILS</Text>
                                 </TouchableOpacity>
                             </View>
@@ -150,7 +150,6 @@ const imageHeight = (imageWidth * 452) / 361;
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 1,
         backgroundColor: '#DFDFDF'
     },
     checkoutButton: {

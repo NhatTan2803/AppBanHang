@@ -73,7 +73,7 @@ export default class Home extends Component {
             } else {
                 return (
                     <View>
-                        <ListProduct method={this.listGoBack} />
+                        <ListProduct method={this.listGoBack.bind(this)} />
                     </View>
                 );
             }
