@@ -14,7 +14,7 @@ import {
     Image
 } from 'react-native';
 import Container from '../Container';
-
+import ContactView from './ContactView';
 export default class Contact extends Component {
     constructor(props) {
         super(props);
@@ -37,7 +37,7 @@ export default class Contact extends Component {
         const { params } = this.props.navigation.state;
         return (
             <Container method={this.MoDrawer}>
-                <Text>Home</Text>
+                <ContactView />
             </Container>
         );
     }

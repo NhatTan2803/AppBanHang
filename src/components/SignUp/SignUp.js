@@ -18,7 +18,7 @@ import {
 import Back_White from "../../img/back_white.png";
 import Iclogo from "../../img/ic_logo.png";
 
-export default class SignIn extends Component {
+export default class SignUp extends Component {
 
     static navigationOptions = {
         header: null
@@ -30,7 +30,27 @@ export default class SignIn extends Component {
         return (
             <View style={styles.container} >
 
-                <Text>Sign Out</Text>/
+                < View style={v1} >
+                    <TouchableOpacity onPress={() => { goBack(); }}>
+                        <Image source={Back_White} style={{ height: 40, width: 40, marginLeft: 0.1 }} />
+                    </TouchableOpacity>
+
+                    <Text style={T_sign}>Wearing a Dress</Text>
+                    <TouchableOpacity>
+                        <Image source={Iclogo} style={{ height: 30, width: 30, alignContent: 'center', marginTop: 5, }} />
+
+                    </TouchableOpacity>
+                </View >
+
+                <View style={v2}>
+                    <TextInput placeholder={"   Nhập tên"} style={textinput}></TextInput>
+                    <TextInput placeholder={"   Nhập Email"} style={textinput}></TextInput>
+                    <TextInput placeholder={"   Nhập mật khẩu"} style={textinput}></TextInput>
+                    <TextInput placeholder={"   Nhập lại mật khẩu"} style={textinput}></TextInput>
+                    <TouchableOpacity style={bigButton} >
+                        <Text style={T_sign}>Sign Up</Text>
+                    </TouchableOpacity>
+                </View>
             </View >
         );
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Image, StyleSheet } from 'react-native';
+import { Text, View, Dimensions, Image, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import Swiper from 'react-native-swiper';
 const { width, height } = Dimensions.get('window');
 
@@ -10,25 +10,37 @@ import partyIcon from '../../../img/temp/party.jpg';
 
 export default class Category extends Component {
     render() {
-        const { wrapper, banner, textSpring } = styles
+        const { wrapper, banner, textSpring, textStyle,imageStyle } = styles
         return (
             <View style={styles.wrapper}>
                 <View style={{ flex: 1, justifyContent: 'center' }}>
                     <Text style={textSpring}>Category</Text>
                 </View>
                 <View style={{ flex: 7, paddingBottom: 5, paddingLeft: 10, }}>
-                    <Swiper width={imgWidth} height={imgHeight}>
-                        <Image source={littleIcon} style={banner} />
-                        <Image source={maxiIcon} style={banner} />
-                        <Image source={partyIcon} style={banner} />
+                    <Swiper width={imageWidth} height={imageHeight}>
+                        <TouchableOpacity>
+                            <ImageBackground source={littleIcon} style={imageStyle}>
+                                <Text style={textStyle}>Maxi Dress</Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <ImageBackground source={partyIcon} style={imageStyle}>
+                                <Text style={textStyle}>Maxi Dress</Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <ImageBackground source={maxiIcon} style={imageStyle}>
+                                <Text style={textStyle}>Maxi Dress</Text>
+                            </ImageBackground>
+                        </TouchableOpacity>
                     </Swiper>
                 </View>
             </View>
         )
     }
 }
-const imgWidth = width - 40;
-const imgHeight = (imgWidth / 933) * 465
+const imageWidth = width - 40;
+const imageHeight = (imageWidth / 933) * 465
 const styles = StyleSheet.create({
     wrapper: {
         height: height * 0.3,
@@ -48,9 +60,27 @@ const styles = StyleSheet.create({
         paddingLeft: 2,
 
     },
+    textStyle: {
+        fontSize: 20,
+        color: '#AFAEAF',
+
+    },
+    imageStyle: {
+        height: imageHeight,
+        width: imageWidth,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+
+    },
     banner: {
-        height: imgHeight,
-        width: imgWidth,
+        height: imageHeight,
+        width: imageWidth,
         padding: 10,
+    },
+    cateTitle: {
+        fontSize: 20,
+        fontFamily: 'Avenir',
+        color: '#9A9A9A'
     }
 })

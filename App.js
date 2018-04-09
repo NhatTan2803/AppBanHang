@@ -10,6 +10,7 @@ import Search from './src/components/Search/Search';
 import Contact from './src/components/Contact/Contact';
 import HomeStack from './src/components/Home/HomeStack';
 import SignIn from './src/components/SignIn/SignIn';
+import SignUp from './src/components/SignUp/SignUp';
 import SignOut from './src/components/SignOut/SignOut';
 import ListProduct from './src/components/ListProduct/ListProduct';
 // import ProductDetail from './src/components/ProductDetail/ProductDetail';
@@ -43,7 +44,7 @@ const Mystack = StackNavigator({
   Order: { screen: OrderHistory },
   Change: { screen: ChangeInfo },
   SignIn: { screen: SignIn },
-  SignOut: { screen: SignOut }
+  SignUp: { screen: SignUp }
 });
 export default Mystack;
 

@@ -35,6 +35,9 @@ class Menu extends Component {
                 <TouchableOpacity style={btnStyle} onPress={() => this.props.navigation.navigate('SignIn')} >
                     <Text style={btnText}>Sign In</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={btnStyle} onPress={() => this.props.navigation.navigate('SignUp')} >
+                    <Text style={btnText}>Sign Up</Text>
+                </TouchableOpacity>
             </View>
         );
         const loginJSX = (

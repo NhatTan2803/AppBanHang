@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Image, StyleSheet,TouchableOpacity } from 'react-native'
+import { Text, View, Dimensions, Image, StyleSheet,TouchableOpacity } from 'react-native';
+
 const { width, height } = Dimensions.get('window');
 
 export default class Collection extends Component {
     render() {
-        const { wrapper, banner, textSpring } = styles
+        const { banner, textSpring } = styles;
         return (
             <TouchableOpacity onPress={this.props.showDetail} style={styles.wrapper}>
                 <View style={{ flex: 1,justifyContent:'center' }}>
@@ -17,7 +18,7 @@ export default class Collection extends Component {
                     />
                 </View>
             </TouchableOpacity>
-        )
+        );
     }
 }
 const imgWidth = width - 40;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Image, StyleSheet } from 'react-native';
-
+import { Text, View, Dimensions, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import ProductDetail from '../../ProductDetail/ProductDetail';
 import sp1 from '../../../img/temp/sp1.jpeg';
 import sp2 from '../../../img/temp/sp2.jpeg';
 import sp3 from '../../../img/temp/sp3.jpeg';
@@ -19,27 +19,28 @@ export default class TopProduct extends Component {
                     <Text style={title}>TOP PRODUCT</Text>
                 </View>
                 <View style={body}>
-                    <View style={productContainer}>
+                    <TouchableOpacity style={productContainer}>
                         <Image source={sp1} style={productImage} />
                         <Text style={produceName}>PRODUCT NAME</Text>
                         <Text style={producePrice}>400$</Text>
-                    </View>
-                    <View style={productContainer}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={productContainer}>
                         <Image source={sp2} style={productImage} />
                         <Text style={produceName}>PRODUCT NAME</Text>
                         <Text style={producePrice}>250$</Text>
-                    </View>
+                    </TouchableOpacity>
                     <View style={{ height: 10, width }} />
-                    <View style={productContainer}>
+                    <TouchableOpacity style={productContainer}>
                         <Image source={sp3} style={productImage} />
                         <Text style={produceName}>PRODUCT NAME</Text>
                         <Text style={producePrice}>400$</Text>
-                    </View>
-                    <View style={productContainer}>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
                         <Image source={sp4} style={productImage} />
                         <Text style={produceName}>PRODUCT NAME</Text>
                         <Text style={producePrice}>250$</Text>
-                    </View>
+                    </TouchableOpacity>
+
                 </View>
             </View>
         );

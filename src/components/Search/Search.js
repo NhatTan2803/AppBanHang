@@ -1,22 +1,21 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-    Platform, StyleSheet, Text, View, Button, Image
-} from 'react-native';
-import Container from '../Container';
-
-export default class Search extends Component {
-    constructor(props){
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
+import Container from '../Container'
+import Collection from '../Home/Collection/Collection';
+import Category from '../Home/Category/Category'
+import TopProduct from '../Home/TopProduct/TopProduct';
+// import Detail from '../Home/Detail';
+import SearchView from './SearchView';
+export default class Home extends Component {
+    constructor(props) {
         super(props);
-        this.MoDrawer = this.MoSlide.bind(this);
+        this.MoSlide = this.MoSlide.bind(this);
+        this.state = {
+            showSearch: false
+        }
     }
     static navigationOptions = {
-        tabBarLabel: 'Search',
+        tabBarLabel: 'Seacrh',
         tabBarIcon: ({ tintColor }) => (
             <Image
                 source={require('../../img/search.png')}
@@ -24,25 +23,50 @@ export default class Search extends Component {
             />
         )
     }
-    MoSlide(){
+    onPressShowDetail() {
+        this.setState({
+            showSearch: true
+        })
+    }
+    detailGoBack() {
+        this.props.navigation.navigate("Home")
+    }
+    MoSlide() {
         this.props.navigation.navigate("DrawerOpen")
     }
     render() {
-        const { goBack } = this.props.navigation;
-        const { params } = this.props.navigation.state;
+        const { navigate } = this.props.navigation;
         return (
-            <Container method={this.MoDrawer}>
-                <Text>Home</Text>
-            </Container>
+            <View style={{ flex: 1, }}>
+                <Container method={this.MoSlide} >
+                    {
+                        this.state.showSearch ? (
+                            <View>
+                                
+                                <TouchableOpacity onPress={() => this.setState({ showSearch: false })}><Text>Cick me to back</Text></TouchableOpacity>
+                            </View>
+                        ) : (
+                                <ScrollView>
+                                    {/* <Collection
+                                        showSearch={this.onPressShowDetail.bind(this)}
+                                    />
+                                    <Category />
+                                    <TopProduct /> */}
+                                    <SearchView/>
+                                </ScrollView>
+                            )
+                    }
+
+                </Container>
+            </View>
+
         );
     }
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        flex: 2,
+        margin: 10,
     },
 });

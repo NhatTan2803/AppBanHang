@@ -4,12 +4,14 @@ import Container from '../Container'
 import Collection from '../Home/Collection/Collection';
 import Category from '../Home/Category/Category'
 import TopProduct from '../Home/TopProduct/TopProduct';
-
-
+import Detail from '../Home/Detail';
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.MoSlide = this.MoSlide.bind(this);
+        this.state = {
+            showDetail: false
+        }
     }
     static navigationOptions = {
         tabBarLabel: 'Home',
@@ -20,8 +22,13 @@ export default class Home extends Component {
             />
         )
     }
-    onPressShowDetail(){
-        this.props.navigation.navigate("Detailpage")
+    onPressShowDetail() {
+        this.setState({
+            showDetail: true
+        })
+    }
+    detailGoBack() {
+        this.props.navigation.navigate("Home")
     }
     MoSlide() {
         this.props.navigation.navigate("DrawerOpen")
@@ -31,13 +38,23 @@ export default class Home extends Component {
         return (
             <View style={{ flex: 1, }}>
                 <Container method={this.MoSlide} >
-                    <ScrollView>
-                        <Collection 
-                        showDetail ={this.onPressShowDetail.bind(this)}
-                        />
-                        <Category />
-                        <TopProduct />
-                    </ScrollView>
+                    {
+                        this.state.showDetail ? (
+                            <View>
+                                <Detail />
+                                <TouchableOpacity onPress={() => this.setState({ showDetail: false })}><Text>Cick me to back</Text></TouchableOpacity>
+                            </View>
+                        ) : (
+                                <ScrollView>
+                                    <Collection
+                                        showDetail={this.onPressShowDetail.bind(this)}
+                                    />
+                                    <Category />
+                                    <TopProduct />
+                                </ScrollView>
+                            )
+                    }
+
                 </Container>
             </View>
 
