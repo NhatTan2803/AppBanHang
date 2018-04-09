@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
-import Container from '../Container'
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import Container from '../Container';
 import Collection from '../Home/Collection/Collection';
-import Category from '../Home/Category/Category'
+import Category from '../Home/Category/Category';
 import TopProduct from '../Home/TopProduct/TopProduct';
 import Detail from '../Home/Detail';
+import ListProduct from '../ListProduct/ListProduct';
+import ProductDetail from '../ProductDetail/ProductDetail';
+
 export default class Home extends Component {
     constructor(props) {
         super(props);
+        this.listGoBack = this.listGoBack.bind(this);
         this.MoSlide = this.MoSlide.bind(this);
         this.state = {
-            showDetail: false
-        }
+            showHome: true,
+            showList: false,
+            showDetail: false,
+        };
     }
     static navigationOptions = {
         tabBarLabel: 'Home',
@@ -21,40 +27,65 @@ export default class Home extends Component {
                 style={[{ tintColor: tintColor }, styles = { width: 20, height: 20, justifyContent: 'center', alignItems: 'center' }]}
             />
         )
+    };
+
+    onPressShowList() {
+        this.setState({
+            showHome: false,
+            showList: true,
+        });
     }
     onPressShowDetail() {
         this.setState({
-            showDetail: true
-        })
+            showDetail: true,
+            showList: false,
+            showHome: false,
+        });
     }
-    detailGoBack() {
-        this.props.navigation.navigate("Home")
+    listGoBack() {
+        this.setState({
+            showHome: true,
+        });
+        console.log('quay lai');
     }
     MoSlide() {
-        this.props.navigation.navigate("DrawerOpen")
+        this.props.navigation.navigate('DrawerOpen');
+    }
+    renderInterface() {
+        if (this.state.showHome) {
+            return (
+                <ScrollView>
+                    <Collection
+                        showList={this.onPressShowList.bind(this)}
+                    />
+                    <Category />
+                    <TopProduct />
+                </ScrollView>
+            );
+        }
+        else {
+            if (this.state.showList) {
+                return (
+                    <View>
+                        <ListProduct method={this.listGoBack.bind(this)} />
+                    </View>
+                );
+            } else {
+                return (
+                    <View>
+                        <ListProduct method={this.listGoBack} />
+                    </View>
+                );
+            }
+        }
     }
     render() {
-        const { navigate } = this.props.navigation;
         return (
-            <View style={{ flex: 1, }}>
+            <View style={{ flex: 1 }}>
                 <Container method={this.MoSlide} >
                     {
-                        this.state.showDetail ? (
-                            <View>
-                                <Detail />
-                                <TouchableOpacity onPress={() => this.setState({ showDetail: false })}><Text>Cick me to back</Text></TouchableOpacity>
-                            </View>
-                        ) : (
-                                <ScrollView>
-                                    <Collection
-                                        showDetail={this.onPressShowDetail.bind(this)}
-                                    />
-                                    <Category />
-                                    <TopProduct />
-                                </ScrollView>
-                            )
+                        this.renderInterface()
                     }
-
                 </Container>
             </View>
 

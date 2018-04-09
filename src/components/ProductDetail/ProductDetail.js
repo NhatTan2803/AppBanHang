@@ -6,7 +6,7 @@ export default class Detail extends Component {
     render() {
         return (
 
-            <Text>This is Detail</Text>
+            <Text>This is Detail product </Text>
 
         );
     }

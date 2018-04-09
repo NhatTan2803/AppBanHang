@@ -9,17 +9,20 @@ import backList from '../../img/backList.png';
 import sp1 from '../../img/temp/sp1.jpeg';
 
 export default class ListProduct extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         const {
             container, header, wrapper, backStyle, titleStyle,
             productContainer, productImage, productInfo, lastRowInfo,
             txtName, txtPrice, txtMaterial, txtColor, txtShowDetail
-         } = styles;
+        } = styles;
         return (
             <View style={container}>
                 <ScrollView style={wrapper}>
                     <View style={header}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.props.method}>
                             <Image source={backList} style={backStyle} />
                         </TouchableOpacity>
                         <Text style={titleStyle}>Party Dress</Text>
@@ -108,7 +111,7 @@ export default class ListProduct extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+
         backgroundColor: '#DBDBD8'
     },
     header: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Image, StyleSheet,TouchableOpacity } from 'react-native';
+import { Text, View, Dimensions, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -7,11 +7,11 @@ export default class Collection extends Component {
     render() {
         const { banner, textSpring } = styles;
         return (
-            <TouchableOpacity onPress={this.props.showDetail} style={styles.wrapper}>
-                <View style={{ flex: 1,justifyContent:'center' }}>
+            <TouchableOpacity onPress={this.props.showList} style={styles.wrapper}>
+                <View style={{ flex: 1, justifyContent: 'center' }}>
                     <Text style={textSpring}>SPRING COLLECTION</Text>
                 </View>
-                <View style={{ flex: 7,paddingBottom: 5,paddingLeft: 10, }}>
+                <View style={{ flex: 7, paddingBottom: 5, paddingLeft: 10, }}>
                     <Image
                         source={require('../../../img/temp/banner.jpg')}
                         style={banner}

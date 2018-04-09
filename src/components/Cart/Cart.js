@@ -4,7 +4,7 @@ import Container from '../Container'
 import Collection from '../Home/Collection/Collection';
 import Category from '../Home/Category/Category'
 import TopProduct from '../Home/TopProduct/TopProduct';
-// import Detail from '../Home/Detail';
+import Detail from '../Home/Detail';
 import CartView from './CartView';
 export default class Home extends Component {
     constructor(props) {
