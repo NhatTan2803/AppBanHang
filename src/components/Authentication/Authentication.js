@@ -6,23 +6,11 @@ import {
 
 import profileIcon from '../../img/temp/profile.png';
 
-class Menu extends Component {
+class Authentication extends Component {
     constructor(props) {
         super(props);
         this.state = { isLogedIn: false };
     }
-
-    // gotoAuthentication() {
-    //     const { navigator } = this.props;
-    //     navigator.push({ name: 'AUTHENTICATION' });
-    // }
-    // gotoChangeInfo() {
-    //     const { navigator } = this.props;
-    //     navigator.push({ name: 'CHANGE_INFO' });
-    // }
-    // gotoOrderHistory() {
-    //     this.navigate('Order');
-    // }
     render() {
         const { navigate } = this.props.navigation;
         const {
@@ -119,4 +107,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Menu;
+export default Authentication;

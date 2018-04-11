@@ -12,7 +12,6 @@ import SignIn from './src/components/SignIn/SignIn';
 import SignUp from './src/components/SignUp/SignUp';
 import SignOut from './src/components/SignOut/SignOut';
 import Home from './src/components/Home/Home';
-import ListProduct from './src/components/ListProduct/ListProduct';
 // import ProductDetail from './src/components/ProductDetail/ProductDetail';
 
 const MyTabnavigator = TabNavigator({

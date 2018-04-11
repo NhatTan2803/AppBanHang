@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import Container from '../Container';
 import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import CartView from './CartView';

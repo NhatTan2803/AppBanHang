@@ -4,7 +4,6 @@ import Container from '../Container';
 import Collection from '../Home/Collection/Collection';
 import Category from '../Home/Category/Category';
 import TopProduct from '../Home/TopProduct/TopProduct';
-import Detail from '../Home/Detail';
 import ListProduct from '../ListProduct/ListProduct';
 import ProductDetail from '../ProductDetail/ProductDetail';
 
@@ -17,6 +16,7 @@ export default class Home extends Component {
             showHome: true,
             showList: false,
             showDetail: false,
+            types: []
         };
     }
     static navigationOptions = {
@@ -28,6 +28,17 @@ export default class Home extends Component {
             />
         )
     };
+    componentDidMount() {
+        fetch('http://localhost/api/')
+            .then(res => res.json())
+            .then(resJSON => {
+                const { type } = resJSON;
+                this.setState({
+                    types: type,
+                });
+                console.log(this.state.types);
+            });
+    }
 
     onPressShowList() {
         this.setState({
@@ -51,14 +62,17 @@ export default class Home extends Component {
     MoSlide() {
         this.props.navigation.navigate('DrawerOpen');
     }
+
     renderInterface() {
+        const { types } = this.state.types;
+        console.log(this.state.types);
         if (this.state.showHome) {
             return (
                 <ScrollView>
                     <Collection
                         showList={this.onPressShowList.bind(this)}
                     />
-                    <Category />
+                    <Category type={types} />
                     <TopProduct />
                 </ScrollView>
             );

@@ -11,9 +11,8 @@ function toTitleCase(str) {
 }
 
 class SearchView extends Component {
-    gotoDetail() {
-        const { navigator } = this.props;
-        navigator.push({ name: 'PRODUCT_DETAIL' });
+    constructor(props) {
+        super(props);
     }
     render() {
         const {
@@ -41,7 +40,7 @@ class SearchView extends Component {
                                 }}
                             />
                         </View>
-                        <TouchableOpacity style={showDetailContainer}>
+                        <TouchableOpacity style={showDetailContainer} onPress={this.props.showDetail}>
                             <Text style={txtShowDetail}>SHOW DETAILS</Text>
                         </TouchableOpacity>
                     </View>
@@ -83,7 +82,7 @@ const imageHeight = (imageWidth * 452) / 361;
 const styles = StyleSheet.create({
     wrapper: {
         backgroundColor: '#F6F6F6',
-        flex: 1
+        
     },
     product: {
         flexDirection: 'row',

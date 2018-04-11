@@ -7,10 +7,28 @@ import littleIcon from '../../../img/temp/little.jpg';
 import maxiIcon from '../../../img/temp/maxi.jpg';
 import partyIcon from '../../../img/temp/party.jpg';
 
-
+const url = 'http:/localhost/api/images/type/'
 export default class Category extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            types: []
+        };
+    }
+    componentWillMount() {
+        fetch('http://localhost/api/')
+            .then(res => res.json())
+            .then(resJSON => {
+                const { type } = resJSON;
+                this.setState({
+                    types: type,
+                });
+                console.log(this.state.types);
+            });
+    }
     render() {
-        const { wrapper, banner, textSpring, textStyle,imageStyle } = styles
+        const { wrapper, banner, textSpring, textStyle, imageStyle } = styles
         return (
             <View style={styles.wrapper}>
                 <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -18,25 +36,17 @@ export default class Category extends Component {
                 </View>
                 <View style={{ flex: 7, paddingBottom: 5, paddingLeft: 10, }}>
                     <Swiper width={imageWidth} height={imageHeight}>
-                        <TouchableOpacity>
-                            <ImageBackground source={littleIcon} style={imageStyle}>
-                                <Text style={textStyle}>Maxi Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <ImageBackground source={partyIcon} style={imageStyle}>
-                                <Text style={textStyle}>Maxi Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <ImageBackground source={maxiIcon} style={imageStyle}>
-                                <Text style={textStyle}>Maxi Dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
+                        {this.state.types.map(e => (
+                            <TouchableOpacity key={e.id} >
+                                <ImageBackground source={{ uri: `http://localhost/api/images/type/${e.image}` }} style={imageStyle}>
+                                    <Text style={textStyle}>{e.name}</Text>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                        ))}
                     </Swiper>
                 </View>
             </View>
-        )
+        );
     }
 }
 const imageWidth = width - 40;
