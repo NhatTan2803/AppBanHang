@@ -41,11 +41,11 @@ export default class Home extends Component {
                 <Container method={this.MoSlide} >
                     {
                         this.state.showCart ? (
-                            <View>
+                            <View style={{ flex: 1, }}>
                                 <CartView showDetail={this.onPressShowDetail.bind(this)} />
                             </View>
                         ) : (
-                                <View>
+                                <View style={{ flex: 1, }}>
                                     <ProductDetail method={this.detailGoBack.bind(this)} />
                                 </View>
                             )
@@ -56,10 +56,3 @@ export default class Home extends Component {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 2,
-        margin: 10,
-    },
-});

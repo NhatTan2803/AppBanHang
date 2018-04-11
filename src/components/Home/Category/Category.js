@@ -3,10 +3,6 @@ import { Text, View, Dimensions, Image, StyleSheet, TouchableOpacity, ImageBackg
 import Swiper from 'react-native-swiper';
 const { width, height } = Dimensions.get('window');
 
-import littleIcon from '../../../img/temp/little.jpg';
-import maxiIcon from '../../../img/temp/maxi.jpg';
-import partyIcon from '../../../img/temp/party.jpg';
-
 const url = 'http:/localhost/api/images/type/'
 export default class Category extends Component {
 
@@ -38,7 +34,7 @@ export default class Category extends Component {
                     <Swiper width={imageWidth} height={imageHeight}>
                         {this.state.types.map(e => (
                             <TouchableOpacity key={e.id} >
-                                <ImageBackground source={{ uri: `http://localhost/api/images/type/${e.image}` }} style={imageStyle}>
+                                <ImageBackground source={{ uri: `${url}${e.image}` }} style={imageStyle}>
                                     <Text style={textStyle}>{e.name}</Text>
                                 </ImageBackground>
                             </TouchableOpacity>

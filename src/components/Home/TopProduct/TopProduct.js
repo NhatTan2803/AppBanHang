@@ -1,13 +1,32 @@
 import React, { Component } from 'react';
-import { Text, View, Dimensions, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, Dimensions, Image, StyleSheet, TouchableOpacity, ListView } from 'react-native';
 import ProductDetail from '../../ProductDetail/ProductDetail';
 import sp1 from '../../../img/temp/sp1.jpeg';
 import sp2 from '../../../img/temp/sp2.jpeg';
 import sp3 from '../../../img/temp/sp3.jpeg';
 import sp4 from '../../../img/temp/sp4.jpeg';
 
+const url = 'http://localhost/api/images/product/';
 export default class TopProduct extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            topproduct: [],
+            // dataSource: ds.cloneWithRows(topproduct),
+        };
+    }
+    componentWillMount() {
+        fetch('http://localhost/api/')
+            .then(res => res.json())
+            .then(resJSON => {
+                const { product } = resJSON;
+                this.setState({
+                    topproduct: product,
+                });
+            });
+    }
     render() {
+        const { topproduct } = this.state;
         const {
             container, titleContainer, title,
             body, productContainer, productImage,
@@ -18,30 +37,18 @@ export default class TopProduct extends Component {
                 <View style={titleContainer}>
                     <Text style={title}>TOP PRODUCT</Text>
                 </View>
-                <View style={body}>
-                    <TouchableOpacity style={productContainer}>
-                        <Image source={sp1} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>400$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer}>
-                        <Image source={sp2} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>250$</Text>
-                    </TouchableOpacity>
-                    <View style={{ height: 10, width }} />
-                    <TouchableOpacity style={productContainer}>
-                        <Image source={sp3} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>400$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <Image source={sp4} style={productImage} />
-                        <Text style={produceName}>PRODUCT NAME</Text>
-                        <Text style={producePrice}>250$</Text>
-                    </TouchableOpacity>
-
-                </View>
+                <ListView
+                    contentContainerStyle={body}
+                    enableEmptySections
+                    dataSource={new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 }).cloneWithRows(topproduct)}
+                    renderRow={product => (
+                        <TouchableOpacity style={productContainer}>
+                            <Image source={{ uri: `${url}${product.images[1]}` }} style={productImage} />
+                            <Text style={produceName}>{product.name.toUpperCase()}</Text>
+                            <Text style={producePrice}>$</Text>
+                        </TouchableOpacity>
+                    )}
+                />
             </View>
         );
     }
